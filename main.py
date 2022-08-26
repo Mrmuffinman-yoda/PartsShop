@@ -1,10 +1,12 @@
 from dataLoader import customers , administrator, employees , items
 from pwinput import pwinput
 import time
+import os
 
-global UserData
+debug = False
 Userdata = None # Filled with user information from Dictionary
 # Short introduction
+os.system("cls")
 print("Welcome to Spekz")
 print("PC Hardware on a budget!")
 
@@ -36,7 +38,22 @@ while True:
 
 # RegionMain Menu
 while True:
-    print(f"Options : \t Logged in as {userData.username}")
-    menuInput = str(input("Main Menu:"))
-
+    os.system("cls")
+    print(f"Main Menu : \t Logged in as {userData.username}")
+    # Main menu for different users and differing options depending
+    # on what type of user is accessing this menu
+    # User Access control (UAC)
+    if userType == " customer":
+        print(f"Options: 1 --> Items \t 2 -->Settings ")
+        menuInput = str(input("Input --> "))
+    elif userType == "employee":
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add Customer \t 4-->Settings ")
+        menuInput = str(input("Input --> "))
+    elif userType == "admin":
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 5-->Debug \t 5-->Settings ")
+        menuInput = str(input("Input --> "))
+        match menuInput:
+            case "1":
+                items()
+            
 # endRegion
