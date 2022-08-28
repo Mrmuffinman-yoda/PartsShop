@@ -1,5 +1,6 @@
 import dataLoader
 import adminItems
+import dataWriter
 from pwinput import pwinput
 import time , os , sys , getpass
 debug = False
@@ -69,9 +70,13 @@ while True:
     elif userType == "admin":
         print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 4 -->Add Items \t 5-->Debug \t 6-->Settings \t 7-->Quit ")
         menuInput = str(input("Input --> "))
+        # This bit is scuffed and needs work
         match menuInput:
             case "1":
-                userData.(items, debug)
+                userData.dataDump(employees, "employees", debug)
+                userData.dataDump(administrator, "administrator", debug)
+                userData.dataDump(items, "items", debug)
+                userData.dataDump(customers, "customers", debug)
             
 # endRegion
 

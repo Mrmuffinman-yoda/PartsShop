@@ -1,3 +1,4 @@
+import dataWriter
 class customer:
     def __init__(self, firstname, lastname, username, password, email):
         self.username = username
@@ -6,12 +7,15 @@ class customer:
         self.__firstname = firstname
         self.__lastname = lastname
 
-    def __repr__(self):
-        return f"{self.username} \t {self.__firstname} \t {self.__lastname} \t {self.email}"
+    # def __repr__(self):
+    #     return [{self.username} ,{self.__firstname} , {self.__lastname} , {self.email}]
 
     # def __str__(self):
     #     return f"{self.username} \t {self.__firstname} \t {self.__lastname} \t {self.email}"
-
+    def dataDumper(self):
+        data = [self.username,self.__password,
+                self.email,self.__firstname,self.__lastname]
+        return data
     def fullname(self):
         return self.__firstname, self.__lastname
 
@@ -36,8 +40,11 @@ class Employee(customer):
 class admin(Employee):
     def changeItemPrice(self,price):
         print(f"Item price has been changed to {price}")
+    
+    def dataDump(self,name,data,debug):
+        dataWriter.dataWriter(name,data,debug)
 
-class merchendise:
+class items:
     def __init__(self, itemName, Value, ID):
         self.name = itemName
         self.value = Value
