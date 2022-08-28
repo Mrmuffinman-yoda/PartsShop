@@ -6,6 +6,12 @@ class customer:
         self.__firstname = firstname
         self.__lastname = lastname
 
+    def __repr__(self):
+        return f"{self.username} \t {self.__firstname} \t {self.__lastname} \t {self.email}"
+
+    # def __str__(self):
+    #     return f"{self.username} \t {self.__firstname} \t {self.__lastname} \t {self.email}"
+
     def fullname(self):
         return self.__firstname, self.__lastname
 
@@ -42,4 +48,6 @@ class merchendise:
 
 
 if __name__ == "__main__":
-    raise PermissionError("Cannot run this , run main file instead.")
+    # raise PermissionError("Cannot run this , run main file instead.")
+    shaggy = customer ("Shaggz" , "scooby" , "SSoobs" , "1234" ,"Shagy@gmail.com")
+    print(shaggy)

@@ -1,12 +1,12 @@
 from dataLoader import customers , administrator, employees , items
+import adminItems
 from pwinput import pwinput
-import time
-import os
-
+import time , os , sys , getpass
 debug = False
 Userdata = None # Filled with user information from Dictionary
 # Short introduction
 os.system("cls")
+print(f"Access from {getpass.getuser()}")
 print("Welcome to Spekz")
 print("PC Hardware on a budget!")
 
@@ -16,15 +16,20 @@ userType = str(input("Select one -->  \t customer : c \t employee : e \t admin:a
 username = str(input("What is your username?: "))
 
 # Set usertype to Administrator , employee or customer 
-if userType =="a":
-    userType = "admin"
-    userData = administrator[username]
-elif userType == "c":
-    userData = customers[username]
-    userType = "customer"
-elif userType == "e":
-    userData = employees[username]
-    userType = "employee"
+try:
+    if userType =="a":
+        userType = "admin"
+        userData = administrator[username]
+    elif userType == "c":
+        userData = customers[username]
+        userType = "customer"
+    elif userType == "e":
+        userData = employees[username]
+        userType = "employee"
+except:
+    sys.tracebacklimit = 0
+    raise ValueError("Username doesn't exist \n please create an account or check your details")
+    quit()
 # While loop to check if input value is equal to password recorded in files
 
 while True:
@@ -47,13 +52,16 @@ while True:
         print(f"Options: 1 --> Items \t 2 -->Settings ")
         menuInput = str(input("Input --> "))
     elif userType == "employee":
-        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add Customer \t 4-->Settings ")
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add Customer \t 4 -->Add Items \t 5-->Settings ")
         menuInput = str(input("Input --> "))
     elif userType == "admin":
-        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 5-->Debug \t 5-->Settings ")
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 4 -->Add Items \t 5-->Debug \t 6-->Settings ")
         menuInput = str(input("Input --> "))
         match menuInput:
             case "1":
-                items()
+                adminItems.main(items,debug)
             
 # endRegion
+
+def adminItems(items,debug):
+    pass
