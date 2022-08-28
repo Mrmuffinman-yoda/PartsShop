@@ -1,13 +1,22 @@
-import users
-import pickle
+import main
+import json
 
-def fileDumper(data,debug = "No"):
-    file = open(f"data/{str(data)}.VOID" , "wb")
-    pickle.dump(data,file)
+
+def dataWriter(name,data,debug = "no"):
+    filename = name
+    SerialisedData = {}
+    for i in data:
+        SerialisedData[i] = data[i].dataDumper()
+    if debug == "yes":
+        print(SerialisedData)
+    file = open(f"data/{filename}.JSON", "w")
+    file.write(json.dumps(SerialisedData))
     file.close()
-    if debug == "Yes":
+    if debug == "yes":
         print("Data Dumped")
 
-
-
-fileDumper("DO NOT DELETE","No")
+# def fileDumper(e,a,c,i):
+#     dataWriter("employees", e)
+#     dataWriter("administrator", a)
+#     dataWriter("customers", c)
+#     dataWriter("items", i)

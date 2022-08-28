@@ -1,4 +1,4 @@
-from dataLoader import customers , administrator, employees , items
+import dataLoader
 import adminItems
 from pwinput import pwinput
 import time , os , sys , getpass
@@ -9,6 +9,18 @@ os.system("cls")
 print(f"Access from {getpass.getuser()}")
 print("Welcome to Spekz")
 print("PC Hardware on a budget!")
+
+
+#Loading data time
+customers = dataLoader.dataReader("customers")
+administrator = dataLoader.dataReader("administrator")
+items = dataLoader.dataReader("items")
+employees = dataLoader.datareader("employees")
+
+
+
+
+
 
 # Wait period then asks for user details
 time.sleep(1.5)
@@ -49,17 +61,17 @@ while True:
     # on what type of user is accessing this menu
     # User Access control (UAC)
     if userType == " customer":
-        print(f"Options: 1 --> Items \t 2 -->Settings ")
+        print(f"Options: 1 --> Items \t 2 -->Settings 7-->Quit")
         menuInput = str(input("Input --> "))
     elif userType == "employee":
-        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add Customer \t 4 -->Add Items \t 5-->Settings ")
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add Customer \t 4 -->Add Items \t 5-->Settings 7-->Quit")
         menuInput = str(input("Input --> "))
     elif userType == "admin":
-        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 4 -->Add Items \t 5-->Debug \t 6-->Settings ")
+        print(f"Options: 1 --> Items \t 2 -->Transactions \t 3 -->Add User \t 4 -->Add Items \t 5-->Debug \t 6-->Settings \t 7-->Quit ")
         menuInput = str(input("Input --> "))
         match menuInput:
             case "1":
-                adminItems.main(items,debug)
+                userData.(items, debug)
             
 # endRegion
 
